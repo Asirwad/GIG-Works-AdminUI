@@ -1,0 +1,77 @@
+
+.inside-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10vh; /* Adjust height if needed */
+  background-color: gray; /* Temporary, adjust color as needed */
+  padding: 0 20px;
+}
+
+/* Label container inside header */
+.label-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 30vw; /* Width can be adjusted based on layout */
+  margin: 0;
+  padding: 0;
+}
+
+/* Button container for header button or links */
+.btn-container {
+  cursor: pointer;
+  transition: border-bottom 0.3s ease, padding-bottom 0.3s ease;
+}
+
+.btn-container:hover {
+  padding-bottom: 2px;
+  border-bottom: #006e74 1.5px solid;
+}
+
+/* User info container alignment */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-right: 20px;
+}
+
+/* User name styling */
+.user-name {
+  font-size: medium;
+  color: #333;
+}
+
+/* User logo styling */
+.user-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.user-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Logout button styling */
+.logout-button {
+  position: absolute;
+  right: 10px;
+  background-color: #fff;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.logout-button:hover {
+  background-color: #f8f9fa;
+  border-color: #ccc;
+}

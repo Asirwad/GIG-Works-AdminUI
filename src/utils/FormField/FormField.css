@@ -1,0 +1,23 @@
+/* input:focus-visible {
+    border: solid 1px #007bff !important;
+}
+input{
+    height: 20px;
+} */
+.inputForm {
+  height: 30px;
+  border: solid 1px;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  font-size: 14px;
+  outline: none;
+  transition: 0.3s;
+  width: 80%;
+}
+.inputForm:focus-visible {
+  border: solid 2px #006e74;
+}
+.inputForm:hover {
+  border: solid 2px #006e74;
+}

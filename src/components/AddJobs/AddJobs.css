@@ -1,0 +1,29 @@
+.container-addJobs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+}
+
+.addjobs-coverbox {
+    background-color: #ECECE1;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    width: 30vw;
+
+    /* Center child elements vertically and horizontally */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Space between FormFields */
+}
+.addJob-btn-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px;
+    
+}
