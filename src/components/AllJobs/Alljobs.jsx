@@ -33,7 +33,7 @@ const AllJobs = () => {
           )
         );
   };
-
+  
   const selectedJob = jobData.find((job) => job.id === selectedJobId)
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const AllJobs = () => {
     }).then((response) => {
       const gigs = response.data.gigs;
       const formattedJobs = gigs.map((gig)=> ({
-        id: gig.id,
+        id: gig._id,
         heading: gig.topic || 'No Title',
         description: gig.description || 'No description available',
         task: gig.title,
