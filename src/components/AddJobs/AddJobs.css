@@ -1,15 +1,11 @@
-.container-addJobs {
+.outer-box {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    height: 70vh;
-    background-color: #f9f9f9;
+    align-items: center;
 }
-
 .addjobs-coverbox {
     background-color: #ffffff;
-    margin: 20px;
-    padding: 40px;
     border-radius: 15px;
     width: 40vw;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -17,35 +13,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
     margin-bottom: 20px;
-}
-
-.addJob-btn-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 10px;
-}
-
-h2 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 2rem;
-    color: #333333;
-}
-
-p {
-    font-family: 'Poppins', sans-serif;
-    color: #555555;
-}
-
-input {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
-}
-
-button {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
+    margin-top: 20px;
 }
