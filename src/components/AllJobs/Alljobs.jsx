@@ -3,6 +3,7 @@ import './AllJobs.css';
 import TaskPage from '../../utils/TaskPage/TaskPage';
 import ViewPage from '../ViewPage/ViewPage';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 
 const AllJobs = () => {
 
@@ -65,10 +66,15 @@ const AllJobs = () => {
   return (
     <div >
       {view && selectedJob?(<ViewPage job = {selectedJob} onBack = {onBackButtonClick} onTaskUpdate={handleTaskUpdate}/>):( <div className="task-page-box">
-      {jobData.map((item) => (
-        <div key={item.id}>
+      {jobData.map((item, index) => (
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: index * 0.2 }}
+          key={item.id}
+        >
           <TaskPage onViewButtonClick={() => handleView(item.id)} job = {item}/>
-        </div>
+        </motion.div>
       ))}
       </div>)}
        
