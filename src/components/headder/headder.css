@@ -29,7 +29,6 @@ body {
   gap: 10px;
   text-decoration: none;
   flex-shrink: 0;
-  margin-right: 25rem;
 }
 
 .logo-image {
@@ -47,12 +46,15 @@ body {
 .nav-buttons {
   display: flex;
   gap: 10px;
-  flex-grow: 1; /* Take available space */
-  justify-content: center; /* Center the buttons */
+  flex-grow: 1;
+  justify-content: center;
+  margin-right: 15rem;
+  margin-left: 15rem;
 }
 
 .nav-btn {
   background-color: #f0f0f0;
+  color: #388e3c;
   border: 1px solid #d0d0d0;
   border-radius: 5px;
   padding: 8px 16px;
