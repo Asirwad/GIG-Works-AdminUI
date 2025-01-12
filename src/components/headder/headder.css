@@ -1,77 +1,131 @@
-
-.inside-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 10vh; /* Adjust height if needed */
-  background-color: gray; /* Temporary, adjust color as needed */
-  padding: 0 20px;
-}
-
-/* Label container inside header */
-.label-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 30vw; /* Width can be adjusted based on layout */
+body {
+  font-family: 'DM Sans', sans-serif;
   margin: 0;
   padding: 0;
-}
-
-/* Button container for header button or links */
-.btn-container {
-  cursor: pointer;
-  transition: border-bottom 0.3s ease, padding-bottom 0.3s ease;
-}
-
-.btn-container:hover {
-  padding-bottom: 2px;
-  border-bottom: #006e74 1.5px solid;
-}
-
-/* User info container alignment */
-.user-info {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-right: 20px;
-}
-
-/* User name styling */
-.user-name {
-  font-size: medium;
+  background-color: #f5f5f5;
   color: #333;
 }
 
-/* User logo styling */
-.user-logo {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.user-logo-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Logout button styling */
-.logout-button {
-  position: absolute;
-  right: 10px;
+.header-container {
   background-color: #fff;
-  padding: 10px 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  padding: 10px 20px;
+  border-bottom: 2px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
-.logout-button:hover {
-  background-color: #f8f9fa;
-  border-color: #ccc;
+.header-content {
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.app-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+  margin-right: 25rem;
+}
+
+.logo-image {
+  height: 40px;
+  width: 40px;
+}
+
+.app-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: #4caf50;
+  text-transform: uppercase;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 10px;
+  flex-grow: 1; /* Take available space */
+  justify-content: center; /* Center the buttons */
+}
+
+.nav-btn {
+  background-color: #f0f0f0;
+  border: 1px solid #d0d0d0;
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-btn.active {
+  background-color: #4caf50;
+  color: #fff;
+  border-color: #4caf50;
+}
+
+.nav-btn:hover {
+  background-color: #e8f5e9;
+  color: #333;
+}
+
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-shrink: 0; /* Prevent shrinking */
+  justify-content: flex-end;
+}
+
+.notification-icon {
+  font-size: 20px;
+  cursor: pointer;
+  color: #4caf50;
+}
+
+.notification-icon:hover {
+  color: #388e3c;
+}
+
+.user-details {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-name {
+  font-size: 14px;
+  color: #333;
+}
+
+.user-icon {
+  font-size: 24px;
+  color: #4caf50;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.user-icon:hover {
+  color: #388e3c;
+}
+
+.logout-dropdown {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #333;
+}
+
+.logout-dropdown:hover {
+  background-color: #f0f0f0;
 }

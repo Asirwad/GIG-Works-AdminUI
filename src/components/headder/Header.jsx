@@ -22,7 +22,6 @@ const Header = () => {
         setViewFlag(false);
     };
     const handleViewJobClick = (job) => {
-        console.log("View button clicked for job:", job);
         setSelectedJob(job);
         setViewFlag(true);
     };
@@ -38,31 +37,31 @@ const Header = () => {
     };
 
     return (
-        <div>
-            <div className="container">
-                <div className="inside-container">
-                    <div className="label-container">
-                        <div onClick={handleAllJobsClick} className="btn-container btn-container-clicked">All Posted Jobs</div>
-                        <div onClick={handleAddJobsClick} className="btn-container btn-container-clicked">Add Jobs</div>
-                    </div>
-                    
-                    {/* User Info and Notification Area */}
-                    <div className="user-info">
-                        <Bell onClick={handleNotification} className="h-5 w-5 text-gray-600" />
-                        <div className="flex items-center space-x-2">
-                            <span className="user-name">{userName}</span>
-                            <div className="user-logo" onClick={toggleLogout}>
-                                <FaUserCircle className="user-logo-img" />
+        <div className="header-container">
+            <div className="header-content">
+                <a href="/" className="app-logo">
+                    <img src="UST logo.jpeg" alt="GIG WORKS Logo" className="logo-image" />
+                    <span className="app-name">GIG WORKS</span>
+                </a>
+                <div className="nav-buttons">
+                    <button onClick={handleAllJobsClick} className={`nav-btn ${allJobs ? 'active' : ''}`}>All Posted Jobs</button>
+                    <button onClick={handleAddJobsClick} className={`nav-btn ${!allJobs && !viewFlag ? 'active' : ''}`}>Add Jobs</button>
+                </div>
+
+                <div className="user-section">
+                    <Bell onClick={handleNotification} className="notification-icon" />
+                    <div className="user-details">
+                        <span className="user-name">{userName}</span>
+                        <FaUserCircle className="user-icon" onClick={toggleLogout} />
+                        {showLogout && (
+                            <div className="logout-dropdown" onClick={handleLogout}>
+                                Logout
                             </div>
-                            {showLogout && (
-                                <div className="logout-button" onClick={handleLogout}>
-                                    Logout
-                                </div>
-                            )}
-                        </div>
+                        )}
                     </div>
                 </div>
             </div>
+
             {viewFlag && selectedJob ? (
                 <ViewPage job={selectedJob} />
             ) : allJobs ? (
