@@ -60,6 +60,10 @@ const AddJobs = () => {
                 });
                 toast.success("Job submitted successfully");
                 resetForm();
+                
+                setTimeout(() => {
+                    window.location.href = "/";
+                }, 3000);
             } catch (error) {
                 toast.error("Failed to submit job");
             }
