@@ -4,6 +4,7 @@ import { Input } from '../../ui/input'
 import { Button } from '../../ui/button'
 import { motion } from 'framer-motion';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 
 const AddJobs = () => {
 
@@ -30,7 +31,7 @@ const AddJobs = () => {
     };
 
     const handleSave = () => {
-        alert("Saved");
+        toast.info("Job saved")
     };
 
     const handleSubmit = async (e) => {
@@ -57,10 +58,10 @@ const AddJobs = () => {
                         user_id: '675712e7450aead0d3a404f7'
                     }
                 });
-                alert("Job Submitted Successfully");
+                toast.success("Job submitted successfully");
                 resetForm();
             } catch (error) {
-                alert("Error in submitting job");
+                toast.error("Failed to submit job");
             }
         } else {
             setErrors(newErrors);
@@ -121,6 +122,7 @@ const AddJobs = () => {
                 </div>
                 </form>
             </motion.div>
+            <ToastContainer position='bottom-right'/>
         </div>
     );
 }
