@@ -2,6 +2,8 @@ import {React} from 'react'
 import "./Taskpage.css"
 import {Button} from '../../ui/button'
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
+
 const TaskPage = ({onViewButtonClick, job}) => {
  
   const updateGigStatus = async (status) => {
@@ -19,27 +21,27 @@ const TaskPage = ({onViewButtonClick, job}) => {
   const handleApproveButtonClick=()=>{
     const result = updateGigStatus("approved");
     if(result){
-      alert("Task approved!")
+      toast.success("Task approved!");
     }else{
-      alert("Task approval failed!")
+      toast.error("Task approval failed!");
     }
   };
 
   const handlePauseButtonClick=()=>{
     const result = updateGigStatus("paused");
     if(result){
-      alert("Task paused!")
+      toast.success("Task paused!");
     }else{
-      alert("Task pause failed!")
+      toast.error("Task pausing failed!");
     }
   };
 
   const handleRevokeButtonClick=()=>{
     const result = updateGigStatus("revoked");
     if(result){
-      alert("Task revoked!")
+      toast.success("Task revoked!");
     }else{
-      alert("Task revokation failed!")
+      toast.error("Task revoking failed!");
     }
   };
  
@@ -79,6 +81,7 @@ const TaskPage = ({onViewButtonClick, job}) => {
           </div>
         </div>
       </div>
+      <ToastContainer position='bottom-right'/>
   </div>
 
   )
