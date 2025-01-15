@@ -79,7 +79,7 @@ const AllJobs = () => {
                 key={item.id}
                 initial={{ y: 40, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.15 }}
+                transition={{ duration: 0.3, delay: index * 0.15 }}
               >
                 <TaskPage 
                   job={item} 

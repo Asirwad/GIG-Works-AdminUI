@@ -83,7 +83,7 @@ const AddJobs = () => {
             <motion.div
                 initial={{ x: 50, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.3 }}
                 viewport={{ amount: 0.3, once: true }}
                 className="w-full max-w-4xl lg:max-w-5xl mx-auto bg-white p-8 rounded-lg shadow-lg"
             >
