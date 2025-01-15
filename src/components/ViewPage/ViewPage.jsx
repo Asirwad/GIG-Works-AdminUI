@@ -109,7 +109,6 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
       <Tabs defaultValue="users" className="p-6">
         <TabsList>
           <TabsTrigger value="users">Users</TabsTrigger>
-          <TabsTrigger value="status">Status</TabsTrigger>
           <TabsTrigger value="task">Task</TabsTrigger>
         </TabsList>
 
@@ -139,13 +138,6 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
           ) : (
             <p className="text-center text-gray-500 py-8">No one has shown interest in this job yet.</p>
           )}
-        </TabsContent>
-
-        <TabsContent value="status" className="mt-6">
-          <div className="prose max-w-none">
-            <h3 className="text-lg font-semibold mb-4">Job Status</h3>
-            <p>{job.status}</p>
-          </div>
         </TabsContent>
 
         <TabsContent value="task" className="mt-6">
