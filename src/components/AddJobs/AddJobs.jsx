@@ -118,13 +118,18 @@ const AddJobs = () => {
                         Ustar Points
                         {errors.ustarPoints && <span className="text-red-500 text-xs ml-1">Required</span>}
                     </label>
-                    <Input
+                    <select
                         id="ustarPoints"
                         name="ustarPoints"
                         value={formData.ustarPoints}
                         onChange={handleChange}
-                        className={`mt-1 ${errors.ustarPoints ? "border-red-500 focus:ring-red-500" : ""}`}
-                    />
+                        className={`mt-1 w-full p-2 border rounded-lg ${errors.ustarPoints ? "border-red-500 focus:ring-red-500" : ""}`}
+                    >
+                        <option value="1">RisingStar</option>
+                        <option value="2">ShiningStar</option>
+                        <option value="3">SuperStar</option>
+                        <option value="4">NovaStar</option>
+                    </select>
                     </div>
                 </div>
 
