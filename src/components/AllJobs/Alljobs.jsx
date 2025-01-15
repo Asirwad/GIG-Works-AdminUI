@@ -51,8 +51,8 @@ const AllJobs = () => {
         task: gig.title,
         status: gig.status || 'open',
         ustarPoints: uStarPointsMapping.get(gig.ustar_category),
-        postedBy: gig.manager_id || 'Unknown Manager',
-        role: 'Manager', // dummy , not a field in response
+        postedBy: gig.manager.name || 'Unknown Manager',
+        role: gig.manager.role,
         teamsLink: 'https://teams.microsoft.com/l/chat/7', // dummy , not a field in response
       }));
       setJobs(formattedJobs);
