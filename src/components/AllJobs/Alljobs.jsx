@@ -4,6 +4,7 @@ import TaskPage from '../../utils/TaskPage/TaskPage';
 import ViewPage from '../ViewPage/ViewPage';
 import axios from 'axios';
 import { motion } from 'framer-motion';
+import { applicationConfiguration as appConfig } from '../../AppConfig';
 
 const AllJobs = () => {
 
@@ -38,7 +39,7 @@ const AllJobs = () => {
   const selectedJob = jobData.find((job) => job.id === selectedJobId)
 
   useEffect(() => {
-    axios.get('http://localhost:8089/api/v1/gigs', {
+    axios.get(appConfig.api.BASE_URL + '/gigs', {
       headers: {
         'user_id': '675712e7450aead0d3a404f7',
       },

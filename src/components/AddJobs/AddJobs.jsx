@@ -5,6 +5,7 @@ import { Button } from '../../ui/button'
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
+import { applicationConfiguration as appConfig } from '../../AppConfig';
 
 const AddJobs = () => {
 
@@ -52,7 +53,7 @@ const AddJobs = () => {
                     ustar_category: uStarPointsMapping.get(formData.ustarPoints),
                     email: "admin@email.com"
                 };
-                await axios.post("http://localhost:8089/api/v1/create_gig", payload, {
+                await axios.post(appConfig.api.BASE_URL + "/create_gig", payload, {
                     headers: {
                         "Content-Type": "application/json",
                         user_id: '675712e7450aead0d3a404f7'

@@ -3,12 +3,13 @@ import "./Taskpage.css"
 import {Button} from '../../ui/button'
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
+import { applicationConfiguration as appConfig } from '../../AppConfig';
 
 const TaskPage = ({onViewButtonClick, job}) => {
  
   const updateGigStatus = async (status) => {
     try {
-      const response = await axios.patch('http://localhost:8089/api/v1/update_gig', {
+      const response = await axios.patch( appConfig.api.BASE_URL +'/update_gig', {
         "gig_id": job.id,
         "status": status
       });

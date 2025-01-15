@@ -5,6 +5,7 @@ import {Button} from '../../ui/button';
 import { Input } from '../../ui/input';
 import { Label } from '../../ui/label';
 import axios from 'axios';
+import { applicationConfiguration as appConfig } from '../../AppConfig';
 
 const ViewPage = ({ job, onBack, onTaskUpdate }) => {
 
@@ -37,7 +38,7 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:8089/api/v1/gig/${job.id}/interested`, {
+    axios.get(appConfig.api.BASE_URL + `/gig/${job.id}/interested`, {
       headers: {
         'user_id': '674df6a4aed3d7ff4a423727',
       },
