@@ -130,7 +130,7 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
                     <div>
                       <p className="font-medium">Name: {user.name}</p>
                       <p className="text-sm text-gray-500">Email: {user.email}</p>
-                      <p className="text-sm text-gray-500">Role: {user.role || 'Developer 1 SDET'}</p>
+                      {user.role && (<p className="text-sm text-gray-500">Role: {user.role}</p>)}
                       <p className="text-sm">Status: <span className={getStatusColor(user.status)}>{user.status}</span></p>
                       <div className="mt-2">
                         Teams link: <a href={user.teamsLink || 'https://teams.microsoft.com/l/chat/2'} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">{user.teamsLink || 'https://teams.microsoft.com/l/chat/'}</a>
