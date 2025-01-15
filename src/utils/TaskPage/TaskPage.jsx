@@ -60,6 +60,7 @@ const TaskPage = ({onViewButtonClick, job}) => {
               buttonName={job.status === 'approved' ? "Approved" : "Approve"}
               onClick={handleApproveButtonClick}
               disabled={job.status === 'approved'}
+              //disabled={job.status === 'approved' || job.status === 'revoked'}
             />
             <Button 
               className="btn btn-secondary" 
@@ -71,6 +72,7 @@ const TaskPage = ({onViewButtonClick, job}) => {
               buttonName={job.status === 'paused' ? "Paused" : "Pause"}
               onClick={handlePauseButtonClick}
               disabled={job.status === 'paused'}
+              //disabled={job.status === 'paused' || job.status === 'revoked'}
             />
             <Button 
               className={`btn ${job.status === 'revoked' ? 'btn-revoked' : 'btn-danger'}`} 
