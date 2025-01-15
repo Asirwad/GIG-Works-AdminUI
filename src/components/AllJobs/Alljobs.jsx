@@ -64,21 +64,32 @@ const AllJobs = () => {
   })
  
   return (
-    <div >
-      {view && selectedJob?(<ViewPage job = {selectedJob} onBack = {onBackButtonClick} onTaskUpdate={handleTaskUpdate}/>):( <div className="task-page-box">
-      {jobData.map((item, index) => (
-        <motion.div
-          initial={{ y: 40, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: index * 0.15 }}
-          key={item.id}
-        >
-          <TaskPage onViewButtonClick={() => handleView(item.id)} job = {item}/>
-        </motion.div>
-      ))}
-      </div>)}
-       
-    </div>
+    <div>
+        {view && selectedJob ? (
+          <ViewPage 
+            job={selectedJob} 
+            onBack={onBackButtonClick} 
+            onTaskUpdate={handleTaskUpdate}
+          />
+        ) : (
+          <div className="task-page-box">
+            {jobData.map((item, index) => (
+              <motion.div
+                key={item.id}
+                initial={{ y: 40, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.15 }}
+              >
+                <TaskPage 
+                  job={item} 
+                  onViewButtonClick={() => handleView(item.id)}
+                />
+              </motion.div>
+            ))}
+          </div>
+        )}
+  </div>
+
   );
 };
  
