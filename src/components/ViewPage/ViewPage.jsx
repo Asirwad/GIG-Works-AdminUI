@@ -5,6 +5,7 @@ import {Button} from '../../ui/button';
 import { Input } from '../../ui/input';
 import { Label } from '../../ui/label';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 import { applicationConfiguration as appConfig } from '../../AppConfig';
 
 const ViewPage = ({ job, onBack, onTaskUpdate }) => {
@@ -80,8 +81,14 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back
-        </button>
-        <div className="bg-white rounded-lg shadow-sm relative">
+      </button>
+      <motion.div
+                initial={{ x: 50, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.3 }}
+                viewport={{ amount: 0.3, once: true }}
+                className="bg-white rounded-lg relative shadow-sm"
+        >
           <div className="p-6 border-b">
             <div className="flex justify-between items-start">
               <div>
@@ -124,7 +131,13 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
         <TabsContent value="usersStatus" className="mt-6">
           {interestedUsers.length > 0 ? (
             <div className="space-y-4">
-              {interestedUsers.map((user) => (
+              {interestedUsers.map((user, index) => (
+                <motion.div
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.2 * (index + 1) }}
+                viewport={{ amount: 0.3, once: true }}
+                >
                 <div key={user.id} className="bg-gray-50 p-4 rounded-lg shadow-lg hover:shadow-xl transition-all">
                   <div className="flex justify-between items-start">
                     <div>
@@ -153,6 +166,7 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
                     </div>
                   </div>
                 </div>
+                </motion.div>
               ))}
             </div>
           ) : (
@@ -161,7 +175,13 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
         </TabsContent>
 
         <TabsContent value="task" className="mt-6">
-          <div className="prose max-w-none">
+          <motion.div
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.2 }}
+                viewport={{ amount: 0.3, once: true }}
+                className="prose max-w-none"
+            >
             <h3 className="text-lg font-semibold mb-4">Task Details </h3> 
             {isEditingTask ? (
                   <div>
@@ -196,10 +216,10 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
                     </button>
                   </div>
                 )}
-          </div>
+          </motion.div>
         </TabsContent>
       </Tabs>
-    </div>
+      </motion.div>
     </div>
 </div>
   );
