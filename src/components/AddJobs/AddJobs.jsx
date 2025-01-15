@@ -19,7 +19,7 @@ const AddJobs = () => {
         heading: '',
         description: '',
         task: '',
-        ustarPoints: ''
+        ustarPoints: '1'
     });
     const [errors, setErrors] = useState({});
 
