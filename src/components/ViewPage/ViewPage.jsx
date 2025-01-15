@@ -34,7 +34,16 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
 
 
   const getStatusColor = (status) => {
-    return status === "Completed" ? "text-green-600" : "text-yellow-600";
+    switch (status) {
+      case 'interested':
+        return 'text-blue-600';
+      case 'rejected':
+        return 'text-red-500';
+      case 'approved':
+        return 'text-green-500';
+      default:
+        return 'text-gray-600';
+    }
   };
 
   useEffect(() => {
@@ -108,11 +117,11 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
 
       <Tabs defaultValue="users" className="p-6">
         <TabsList>
-          <TabsTrigger value="users">Users Status</TabsTrigger>
+          <TabsTrigger value="usersStatus">Users Status</TabsTrigger>
           <TabsTrigger value="task">Task</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="users" className="mt-6">
+        <TabsContent value="usersStatus" className="mt-6">
           {interestedUsers.length > 0 ? (
             <div className="space-y-4">
               {interestedUsers.map((user) => (
