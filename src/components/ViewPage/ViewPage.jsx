@@ -125,7 +125,7 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
           {interestedUsers.length > 0 ? (
             <div className="space-y-4">
               {interestedUsers.map((user) => (
-                <div key={user.id} className="bg-gray-50 rounded-lg p-4">
+                <div key={user.id} className="bg-gray-50 p-4 rounded-lg shadow-lg hover:shadow-xl transition-all">
                   <div className="flex justify-between items-start">
                     <div>
                       <p className="font-medium">Name: {user.name}</p>
@@ -137,8 +137,19 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
                       </div>
                     </div>
                     <div className="flex space-x-2">
-                      <Button size="sm" className="bg-teal hover:bg-teal-400 text-white text-sm px-4 py-1 rounded">Approve</Button>
-                      <Button size="sm" variant="outline" className="bg-teal hover:bg-teal-400 text-sm px-4 py-1 rounded border-red-600 text-white hover:bg-red-50 hover:text-red-500">Reject</Button>
+                      <Button 
+                        size="sm" 
+                        className="bg-teal hover:bg-teal-400 text-white text-sm px-4 py-1 rounded transition-colors"
+                      >
+                        Approve
+                      </Button>
+                      <Button 
+                        size="sm" 
+                        variant="outline" 
+                        className="bg-teal text-sm px-4 py-1 rounded border-red-600 text-white hover:bg-red-50 hover:text-red-500 transition-colors"
+                      >
+                        Reject
+                      </Button>
                     </div>
                   </div>
                 </div>
