@@ -80,12 +80,16 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
     });
   }, [job.id]);
 
+  const updateGigEngagementStatus = (job_id, user_id, status) => {
+    // need to implement after getting api
+  }
+
   const handleInterestedUserApproval = (job, user_id) => {
-    console.log({job, user_id});
+    updateGigEngagementStatus(job.id, user_id, "approved");
   }
 
   const handleInterestedUserRejection = (job, user_id) => {
-    console.log({job, user_id});
+    updateGigEngagementStatus(job.id, user_id, "rejected");
   }
   return (
     
