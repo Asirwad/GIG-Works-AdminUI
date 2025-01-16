@@ -8,6 +8,7 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import { applicationConfiguration as appConfig } from '../../AppConfig';
 import { toast, ToastContainer } from 'react-toastify';
+import { getStatusColor } from '../../lib/util';
 
 const ViewPage = ({ job, onBack, onTaskUpdate }) => {
 
@@ -39,20 +40,6 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
   const handleTaskCancel = () => {
     setTaskDetails(job.task);
     setIsEditingTask(false);
-  };
-
-
-  const getStatusColor = (status) => {
-    switch (status) {
-      case 'interested':
-        return 'text-blue-600';
-      case 'rejected':
-        return 'text-red-500';
-      case 'approved':
-        return 'text-green-500';
-      default:
-        return 'text-gray-600';
-    }
   };
 
   useEffect(() => {
