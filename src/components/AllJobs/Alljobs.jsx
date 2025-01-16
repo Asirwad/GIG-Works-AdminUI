@@ -120,20 +120,6 @@ const AllJobs = ({ searchQuery }) => {
         ) : (
           <main className="container mx-auto px-4 py-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* {jobData.map((item, index) => (
-                <motion.div
-                  key={item.id}
-                  initial={{ y: 40, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.3, delay: index * 0.15 }}
-                >
-                  <TaskPage 
-                    job={item} 
-                    onViewButtonClick={() => handleView(item.id)}
-                  />
-                </motion.div>
-              ))} */}
-
               {filteredGigs.map((gig, index) => (
                 <motion.div
                   key={gig.id}
