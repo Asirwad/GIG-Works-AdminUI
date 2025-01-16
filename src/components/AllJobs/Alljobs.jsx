@@ -170,7 +170,7 @@ const AllJobs = () => {
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.3, delay: index * 0.15 }}
                 >
-                  <Card key={gig.id} className="bg-white flex flex-col h-full">
+                  <Card key={gig.id} className="bg-white flex flex-col h-full shadow-md transition duration-300 hover:shadow-xl">
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-xl font-bold">
                       {highlightText(gig.heading, searchTerm)}
