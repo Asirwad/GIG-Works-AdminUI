@@ -10,12 +10,13 @@ import { Star } from 'lucide-react';
 import { Button } from '../../ui/button';
 import { toast, ToastContainer } from 'react-toastify';
 
-const AllJobs = () => {
+const AllJobs = ({ searchQuery }) => {
 
   const [selectedJobId, setSelectedJobId] = useState(null);
   const [view,setView]=useState(false);
+  const [jobData, setJobs] = useState([]);
   const [filteredGigs, setFilteredGigs] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+
   const handleView=(jobId)=>{
     setSelectedJobId(jobId)
     setView(true)
@@ -26,8 +27,6 @@ const AllJobs = () => {
   uStarPointsMapping.set("ShiningStar", "2");
   uStarPointsMapping.set("SuperStar", "3");
   uStarPointsMapping.set("NovaStar", "4");
-
-  const [jobData, setJobs] = useState([]);
 
   const onBackButtonClick = () => {
     setView(false);
@@ -70,34 +69,6 @@ const AllJobs = () => {
       setJobs([]);
     })
   });
-
-  const highlightText = (text, highlight) => {
-    if (!highlight.trim()) {
-      return text;
-    }
-    const regex = new RegExp(`(${highlight})`, "gi");
-    const parts = text.split(regex);
-    return parts.map((part, index) =>
-      regex.test(part) ? (
-        <span key={index} className="bg-yellow-200">
-          {part}
-        </span>
-      ) : (
-        part
-      )
-    );
-  };
-
-  const handleSearch = (e) => {
-    const term = e.target.value;
-    setSearchTerm(term);
-    const filtered = jobData.filter(
-      (gig) =>
-        gig.title.toLowerCase().includes(term.toLowerCase()) ||
-        gig.description.toLowerCase().includes(term.toLowerCase())
-    );
-    setFilteredGigs(filtered);
-  };
 
   const updateGigStatus = async (status, job) => {
     try {
@@ -173,7 +144,7 @@ const AllJobs = () => {
                   <Card key={gig.id} className="bg-white flex flex-col h-full shadow-md transition duration-300 hover:shadow-xl">
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-xl font-bold">
-                      {highlightText(gig.heading, searchTerm)}
+                      {gig.heading}
                     </CardTitle>
                     <Button variant="ghost" size="icon" className="text-yellow-500 bg-transparent">
                       <Star className="h-4 w-4 hover:fill-yellow-500"/>
@@ -184,7 +155,7 @@ const AllJobs = () => {
                     <div>
                       <h3 className="font-semibold mb-2">Description</h3>
                       <p className="text-sm text-gray-600 mb-4">
-                        {highlightText(gig.description, searchTerm)}
+                        {gig.description}
                       </p>
                     </div>
                     <div className="flex justify-between mt-4">

@@ -1,11 +1,13 @@
+import { useState } from 'react'
 import React from 'react'
-import Header from '../headder/Header'
-import Footer from '../../ui/footer'
+import Dashboard from '../Dashboard/dashboard'
+
 const Homepage = () => {
+  const [searchQuery, setSearchQuery] = useState("");
   return (
     <div>
        <>
-       <Header/>
+       <Dashboard searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
        {/* <Footer/> */}
        </> 
         

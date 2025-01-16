@@ -12,7 +12,6 @@ const Header = () => {
     const [selectedJob, setSelectedJob] = useState(null);
     const [showLogout, setShowLogout] = useState(false);
     const userName = appConfig.admin.name;
-    const [searchQuery, setSearchQuery] = useState('');
 
     const handleAllJobsClick = () => {
         setAllJobs(true);
@@ -47,8 +46,8 @@ const Header = () => {
                     <input
                         type="text"
                         placeholder="Search Jobs..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
+                        value={null}
+                        onChange={() => {}}
                         className="py-2 px-4 text-sm border rounded-lg border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-600"
                     />
                 </div>
