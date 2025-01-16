@@ -49,7 +49,13 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
       },
     }).then((response) => {
       if(response.data.interestedUsers){
-        setInterestedUsers(response.data.interestedUsers);
+
+        // sorting the users
+        const statusOrder = ['interested', 'approved', 'rejected'];
+        const sortedUsers = response.data.interestedUsers.sort(
+          (a, b) => statusOrder.indexOf(a.status) - statusOrder.indexOf(b.status)
+        );
+        setInterestedUsers(sortedUsers);
       }else{
         setInterestedUsers([]);
       }
