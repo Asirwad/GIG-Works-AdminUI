@@ -56,13 +56,13 @@ const Header = () => {
                     <div className="flex gap-4">
                         <button
                             onClick={handleAllJobsClick}
-                            className={`py-2 px-4 text-sm rounded border ${allJobs ? 'bg-teal-600 text-white border-teal-600 hover:bg-teal-700' : 'bg-gray-100 text-teal-600 border-gray-200'} transition-all duration-300`}
+                            className={`py-2 px-4 text-sm rounded border mr-0 ${allJobs ? 'bg-teal-600 text-white border-teal-600 hover:bg-teal-700' : 'bg-gray-100 text-teal-600 border-gray-200'} transition-all duration-300`}
                         >
                             All Posted Jobs
                         </button>
                         <button
                             onClick={handleAddJobsClick}
-                            className={`py-2 px-4 text-sm rounded border ${!allJobs && !viewFlag ? 'bg-teal-600 text-white border-teal-600 hover:bg-teal-700' : 'bg-gray-100 text-teal-600 border-gray-200'} transition-all duration-300`}
+                            className={`py-2 px-4 text-sm rounded border ml-0 ${!allJobs && !viewFlag ? 'bg-teal-600 text-white border-teal-600 hover:bg-teal-700' : 'bg-gray-100 text-teal-600 border-gray-200'} transition-all duration-300`}
                         >
                             Add Jobs
                         </button>
