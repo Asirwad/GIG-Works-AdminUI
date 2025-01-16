@@ -79,6 +79,14 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
         }
     });
   }, [job.id]);
+
+  const handleInterestedUserApproval = (job, user_id) => {
+    console.log({job, user_id});
+  }
+
+  const handleInterestedUserRejection = (job, user_id) => {
+    console.log({job, user_id});
+  }
   return (
     
     <div className="min-h-screen bg-[#f5f3ef] p-6">
@@ -163,6 +171,7 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
                           <Button 
                             size="sm" 
                             className="bg-teal hover:bg-teal-400 text-white text-sm px-4 py-1 rounded transition-colors"
+                            onClick={() => handleInterestedUserApproval(job, user.user_id)}
                           >
                             Approve
                           </Button>
@@ -170,6 +179,7 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
                             size="sm" 
                             variant="outline" 
                             className="bg-teal text-sm px-4 py-1 rounded border-red-600 text-white hover:bg-red-50 hover:text-red-500 transition-colors"
+                            onClick={() => handleInterestedUserRejection(job, user.user_id)}
                           >
                             Reject
                           </Button>
