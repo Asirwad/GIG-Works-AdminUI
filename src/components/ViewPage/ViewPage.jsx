@@ -158,19 +158,23 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
                       </div>
                     </div>
                     <div className="flex space-x-2">
-                      <Button 
-                        size="sm" 
-                        className="bg-teal hover:bg-teal-400 text-white text-sm px-4 py-1 rounded transition-colors"
-                      >
-                        Approve
-                      </Button>
-                      <Button 
-                        size="sm" 
-                        variant="outline" 
-                        className="bg-teal text-sm px-4 py-1 rounded border-red-600 text-white hover:bg-red-50 hover:text-red-500 transition-colors"
-                      >
-                        Reject
-                      </Button>
+                      {user.status === 'interested' && (
+                        <>
+                          <Button 
+                            size="sm" 
+                            className="bg-teal hover:bg-teal-400 text-white text-sm px-4 py-1 rounded transition-colors"
+                          >
+                            Approve
+                          </Button>
+                          <Button 
+                            size="sm" 
+                            variant="outline" 
+                            className="bg-teal text-sm px-4 py-1 rounded border-red-600 text-white hover:bg-red-50 hover:text-red-500 transition-colors"
+                          >
+                            Reject
+                          </Button>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
