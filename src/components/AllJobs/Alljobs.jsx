@@ -61,8 +61,19 @@ const AllJobs = ({ searchQuery }) => {
         role: gig.manager.role,
         teamsLink: 'https://teams.microsoft.com/l/chat/7', // dummy , not a field in response
       }));
-      setJobs(formattedJobs);
-      setFilteredGigs(formattedJobs);
+
+      // Sort the formattedJobs, placing 'revoked' gigs at the end
+      const sortedJobs = formattedJobs.sort((a, b) => {
+        if (a.status === 'revoked' && b.status !== 'revoked') {
+          return 1;
+        }
+        if (a.status !== 'revoked' && b.status === 'revoked') {
+          return -1;
+        }
+        return 0;
+      });
+      setJobs(sortedJobs);
+      setFilteredGigs(sortedJobs);
     })
     .catch((error) => {
       console.error('Error fetching data:', error);
