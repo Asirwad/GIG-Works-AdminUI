@@ -166,13 +166,13 @@ const AllJobs = ({ searchQuery }) => {
                       { gig.status === 'awaiting_admin_approval' && (
                         <>
                           <Button
-                            className="w-full bg-teal-600 hover:bg-teal-700 mt-auto text-white"
+                            className="w-1/3 bg-teal-600 hover:bg-teal-700 mt-auto text-white"
                             onClick={() => handleApproveButtonClick(gig)}
                           >
                             Approve
                           </Button>
                           <Button
-                            className="w-full bg-teal-600 hover:bg-teal-700 mt-auto text-white"
+                            className="w-1/3 bg-teal-600 hover:bg-teal-700 mt-auto text-white"
                             onClick={() => handleRevokeButtonClick(gig)}
                           >
                             Reject
