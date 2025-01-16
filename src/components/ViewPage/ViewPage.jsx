@@ -7,6 +7,7 @@ import { Label } from '../../ui/label';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { applicationConfiguration as appConfig } from '../../AppConfig';
+import { toast, ToastContainer } from 'react-toastify';
 
 const ViewPage = ({ job, onBack, onTaskUpdate }) => {
 
@@ -19,13 +20,20 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
   };
 
   const handleTaskSave = () => {
-    const updatedJob = { ...job, task: taskDetails };
-
-    // Call the parent function to update the job list
-    if (onTaskUpdate) {
-      onTaskUpdate(updatedJob);
-    }
-    setIsEditingTask(false);
+    const updatedJob = { ...job, title: taskDetails };
+    console.log(updatedJob);
+    axios.patch(appConfig.api.BASE_URL + `/gigs/${job.id}`, updatedJob)
+    .then((response) => {
+      console.log(response.data);
+      if(onTaskUpdate){
+        onTaskUpdate(updatedJob);
+      }
+      setIsEditingTask(false);
+      toast.success("Task updated successfully");
+    })
+    .catch((error) => {
+      toast.error("Failed to update task");
+    })
   };
 
   const handleTaskCancel = () => {
@@ -221,6 +229,7 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
       </Tabs>
       </motion.div>
     </div>
+    <ToastContainer position="bottom-right" />
 </div>
   );
 };
