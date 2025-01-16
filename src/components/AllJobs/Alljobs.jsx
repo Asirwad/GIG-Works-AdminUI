@@ -190,7 +190,7 @@ const AllJobs = ({ searchQuery }) => {
                           className="w-1/3 bg-teal-600 hover:bg-teal-700 mt-auto text-white"
                           onClick={() => handleApproveButtonClick(gig)}
                           >
-                            Unpause
+                            Resume
                           </Button>
                           <Button
                             className="w-1/3 bg-teal-600 hover:bg-teal-700 mt-auto text-white"
