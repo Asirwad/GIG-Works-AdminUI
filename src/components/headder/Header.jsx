@@ -40,7 +40,6 @@ const Header = () => {
         <div className="header-container">
             <div className="header-content">
                 <a href="/" className="app-logo">
-                    <img src="UST logo.jpeg" alt="GIG WORKS Logo" className="logo-image" />
                     <span className="app-name">GIG WORKS</span>
                 </a>
                 <div className="nav-buttons">
