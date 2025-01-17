@@ -15,6 +15,7 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
   const [isEditingTask, setIsEditingTask] = useState(false);
   const [taskDetails, setTaskDetails] = useState(job.task);
   const [interestedUsers, setInterestedUsers] = useState([]);
+  const [currentTab, setCurrentTab] = useState('usersStatus');
 
   const handleTaskEdit = () => {
     setIsEditingTask(true);
@@ -136,10 +137,36 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
           </div>
 
       <Tabs defaultValue="usersStatus" className="p-6">
-        <TabsList>
-          <TabsTrigger value="usersStatus">Users Status</TabsTrigger>
-          <TabsTrigger value="task">Task</TabsTrigger>
-        </TabsList>
+      <TabsList>
+      <TabsTrigger 
+        value="usersStatus" 
+        onClick={() => setCurrentTab('usersStatus')}
+        className={`${
+          currentTab === 'usersStatus' ? 'bg-teal-600 text-white' : 'bg-gray-200 text-teal-600'
+        } ${currentTab !== 'usersStatus' && 'hover:bg-teal-100 hover:text-teal-800'} transition-colors duration-300 ease-in-out px-4 py-2 rounded-md`}
+      >
+        Users Status
+      </TabsTrigger>
+      <TabsTrigger 
+        value="task" 
+        onClick={() => setCurrentTab('task')}
+        className={`${
+          currentTab === 'task' ? 'bg-teal-600 text-white' : 'bg-gray-200 text-teal-600'
+        } hover:bg-teal-100 hover:text-teal-800 transition-colors duration-300 ease-in-out px-4 py-2 rounded-md`}
+      >
+        Task
+      </TabsTrigger>
+      <TabsTrigger 
+        value="collaborators" 
+        onClick={() => setCurrentTab('collaborators')}
+        className={`${
+          currentTab === 'collaborators' ? 'bg-teal-600 text-white' : 'bg-gray-200 text-teal-600'
+        } hover:bg-teal-100 hover:text-teal-800 transition-colors duration-300 ease-in-out px-4 py-2 rounded-md`}
+      >
+        Collaborators
+      </TabsTrigger>
+    </TabsList>
+
 
         <TabsContent value="usersStatus" className="mt-6">
           {interestedUsers.length > 0 ? (
@@ -236,6 +263,10 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
                   </div>
                 )}
           </motion.div>
+        </TabsContent>
+
+        <TabsContent value="Collaborators" className="mt-6">
+          collab page
         </TabsContent>
       </Tabs>
       </motion.div>
