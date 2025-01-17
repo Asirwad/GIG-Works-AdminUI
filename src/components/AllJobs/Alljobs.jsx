@@ -55,6 +55,7 @@ const AllJobs = ({ searchQuery }) => {
         postedBy: gig.manager.name || 'Unknown Manager',
         role: gig.manager.role,
         teamsLink: 'https://teams.microsoft.com/l/chat/7', // dummy , not a field in response
+        collaborators: gig.collaborators || [],
       }));
 
       // Sort the formattedJobs, placing 'revoked' gigs at the end

@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from 'react';
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Delete, DeleteIcon, PlusCircle, Trash } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '../../ui/tabs'
 import {Button} from '../../ui/button'; 
 import { Input } from '../../ui/input';
@@ -85,6 +85,39 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
   const handleInterestedUserRejection = (job, user_id) => {
     updateGigEngagementStatus(job.id, user_id, "rejected");
   }
+
+  const [formData, setFormData] = useState({
+    collaborator_id: '',
+  })
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+        ...formData,
+        [name]: value
+    });
+  };
+
+  const resetForm = () => {
+    setFormData({ collaborator_id: '' });
+  };
+
+  const handleAddCollaborator = async (e) => {
+    e.preventDefault();
+    try{
+      await axios.patch(appConfig.api.BASE_URL + `/gigs/${job.id}/collaborators`, {
+        "collaborator_id": formData.collaborator_id
+      });
+      toast.success('Collaborator added successfully');
+      resetForm();
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
+
+    }catch(error){
+      console.log(error);
+      toast.error('Failed to add collaborator');
+    }
+  }
   return (
     
     <div className="min-h-screen bg-[#f5f3ef] p-6">
@@ -164,6 +197,15 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
         } hover:bg-teal-100 hover:text-teal-800 transition-colors duration-300 ease-in-out px-4 py-2 rounded-md`}
       >
         Collaborators
+      </TabsTrigger>
+      <TabsTrigger 
+        value="addCollaborator" 
+        onClick={() => setCurrentTab('addCollaborator')}
+        className={`${
+          currentTab === 'addCollaborator' ? 'bg-teal-600 text-white' : 'bg-gray-200 text-teal-600'
+        } hover:bg-teal-100 hover:text-teal-800 transition-colors duration-300 ease-in-out px-4 py-2 rounded-md`}
+      >
+        Add Collaborator
       </TabsTrigger>
     </TabsList>
 
@@ -265,9 +307,81 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
           </motion.div>
         </TabsContent>
 
-        <TabsContent value="Collaborators" className="mt-6">
-          collab page
+        <TabsContent value="collaborators" className="mt-6">
+          {job.collaborators.length > 0 ? (
+              <>
+                <h2 className='mb-4 ml-5'>Total Collaborators: {job.collaborators.length}</h2>
+                <div className="space-y-4">
+                  {job.collaborators.map((user, index) => (
+                    <motion.div
+                    initial={{ y: 50, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.2 * (index + 1) }}
+                    viewport={{ amount: 0.3, once: true }}
+                    >
+                    <div key={user.id} className="bg-gray-50 p-4 rounded-lg shadow-lg hover:shadow-xl transition-all">
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <p className="font-medium">Name: {user.name}</p>
+                          <p className="text-sm text-gray-500">Email: {user.email}</p>
+                          {user.role && (<p className="text-sm text-gray-500">Role: {user.role}</p>)}
+                          <div className="mt-2">
+                            Teams link: <a href={user.teamsLink || 'https://teams.microsoft.com/l/chat/2'} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">{user.teamsLink || 'https://teams.microsoft.com/l/chat/'}</a>
+                          </div>
+                        </div>
+                        <div className="flex space-x-2">
+                          <Button 
+                                size="sm" 
+                                className="flex items-center bg-teal hover:bg-teal-400 text-white text-sm px-4 py-1 rounded transition-colors"
+                                onClick={() => {}}
+                          >
+                                Remove
+                                <Trash className='ml-2' size={16}/>
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <p className="text-center text-gray-500 py-8">No collaborator in this job yet.</p>
+            )}
         </TabsContent>
+
+        <TabsContent value="addCollaborator" className="mt-6">
+          <motion.div
+            initial={{ x: 50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.2 }}
+            viewport={{ amount: 0.3, once: true }}
+            className="w-full mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg"
+          >
+            <h2 className="text-2xl font-semibold text-gray-800 mb-6">Add Collaborator</h2>
+            <form onSubmit={handleAddCollaborator} className="flex items-center space-x-4">
+              <div className="flex-1">
+                <Input 
+                  type="text" 
+                  id="collaborator_id" 
+                  name="collaborator_id" 
+                  required 
+                  onChange={handleChange}
+                  className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                  placeholder="Enter Collaborator ID"
+                />
+              </div>
+              <Button 
+                type="submit" 
+                className="flex items-center bg-teal-600 text-white py-2 px-6 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500"
+              >
+                Add
+                <PlusCircle className="ml-2" size={18} />
+              </Button>
+            </form>
+          </motion.div>
+        </TabsContent>
+
       </Tabs>
       </motion.div>
     </div>
