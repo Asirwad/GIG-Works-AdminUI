@@ -8,7 +8,7 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import { applicationConfiguration as appConfig } from '../../AppConfig';
 import { toast, ToastContainer } from 'react-toastify';
-import { getStatusColor } from '../../lib/util';
+import { getStatusColor, getUStarName } from '../../lib/util';
 
 const ViewPage = ({ job, onBack, onTaskUpdate }) => {
 
@@ -110,7 +110,7 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
                 <div className="mt-2 flex items-center space-x-2">
                   <span className="text-sm text-gray-500">Status: {job.status}</span>
                   <span className="text-sm text-gray-500">•</span>
-                  <span className="text-sm text-gray-500">USTAR Points: {job.ustarPoints}</span>
+                  <span className="text-sm text-gray-500">USTAR Points: {job.ustarPoints} ({getUStarName.get(job.ustarPoints)})</span>
                 </div>
               </div>
               <div className="text-right space-y-2">
