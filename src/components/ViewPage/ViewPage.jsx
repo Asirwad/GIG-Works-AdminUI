@@ -135,7 +135,7 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
             </div>
           </div>
 
-      <Tabs defaultValue="users" className="p-6">
+      <Tabs defaultValue="usersStatus" className="p-6">
         <TabsList>
           <TabsTrigger value="usersStatus">Users Status</TabsTrigger>
           <TabsTrigger value="task">Task</TabsTrigger>
