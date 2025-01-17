@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "../../ui/card";
 import { Star } from 'lucide-react';
 import { Button } from '../../ui/button';
 import { toast, ToastContainer } from 'react-toastify';
+import { getUStarPoint } from '../../lib/util';
 
 const AllJobs = ({ searchQuery }) => {
 
@@ -21,12 +22,6 @@ const AllJobs = ({ searchQuery }) => {
     setSelectedJobId(jobId)
     setView(true)
   }
-
-  const uStarPointsMapping = new Map();
-  uStarPointsMapping.set("RisingStar", "1");
-  uStarPointsMapping.set("ShiningStar", "2");
-  uStarPointsMapping.set("SuperStar", "3");
-  uStarPointsMapping.set("NovaStar", "4");
 
   const onBackButtonClick = () => {
     setView(false);
@@ -56,7 +51,7 @@ const AllJobs = ({ searchQuery }) => {
         description: gig.description || 'No description available',
         task: gig.title,
         status: gig.status || 'open',
-        ustarPoints: uStarPointsMapping.get(gig.ustar_category),
+        ustarPoints: getUStarPoint.get(gig.ustar_category),
         postedBy: gig.manager.name || 'Unknown Manager',
         role: gig.manager.role,
         teamsLink: 'https://teams.microsoft.com/l/chat/7', // dummy , not a field in response
