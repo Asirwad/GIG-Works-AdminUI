@@ -85,6 +85,11 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
     .then((response) => {
       console.log(response.data);
       toast.success("Status updated successfully");
+      setInterestedUsers((prevUsers) => 
+        prevUsers.map((user) => 
+          user.user_id === user_id ? { ...user, status: status } : user
+        )
+      );
     }).catch((error) => {
       toast.error("Failed to update status");
     });
