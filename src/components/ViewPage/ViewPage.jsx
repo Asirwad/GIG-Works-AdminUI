@@ -75,7 +75,19 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
   }, [job.id]);
 
   const updateGigEngagementStatus = (job_id, user_id, status) => {
-    // need to implement after getting api
+    const payload = {
+      gig_id: job_id,
+      user_id: user_id,
+      status: status
+    }
+    console.log(payload);
+    axios.patch(appConfig.api.BASE_URL + `/update_gig_engagement`, payload)
+    .then((response) => {
+      console.log(response.data);
+      toast.success("Status updated successfully");
+    }).catch((error) => {
+      toast.error("Failed to update status");
+    });
   }
 
   const handleInterestedUserApproval = (job, user_id) => {
@@ -225,6 +237,7 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
                     <div>
                       <p className="font-medium">Name: {user.name}</p>
                       <p className="text-sm text-gray-500">Email: {user.email}</p>
+                      <p className="text-sm text-gray-500">ID: {user.user_id}</p>
                       {user.role && (<p className="text-sm text-gray-500">Role: {user.role}</p>)}
                       <p className="text-sm">Status: <span className={getStatusColor(user.status) + " font-semibold"}>{user.status}</span></p>
                       <div className="mt-2">
