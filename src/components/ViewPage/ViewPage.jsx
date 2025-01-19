@@ -9,6 +9,7 @@ import { motion } from 'framer-motion';
 import { applicationConfiguration as appConfig } from '../../AppConfig';
 import { toast, ToastContainer } from 'react-toastify';
 import { getStatusColor, getUStarName } from '../../lib/util';
+import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '../../ui/dialog';
 
 const ViewPage = ({ job, onBack, onTaskUpdate }) => {
 
@@ -16,6 +17,29 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
   const [taskDetails, setTaskDetails] = useState(job.task);
   const [interestedUsers, setInterestedUsers] = useState([]);
   const [currentTab, setCurrentTab] = useState('usersStatus');
+
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [selectedCollaborator, setSelectedCollaborator] = useState(null);
+
+  const handleCollaboratorRemoveClick = (collaborator) => {
+    setSelectedCollaborator(collaborator);
+    setDialogOpen(true);
+  };
+
+  const handleConfirmCollaboratorRemove = () => {
+    if (selectedCollaborator) {
+      // Call the removeCollaborator function here
+      console.log("Removing collaborator:", selectedCollaborator);
+      alert("Removing collaborator:", selectedCollaborator.name);
+      // removeCollaborator(job.id, selectedCollaborator.id); // Uncomment this when the function is defined
+    }
+    setDialogOpen(false);
+  };
+
+  const handleCancelCollaboratorRemove = () => {
+    setSelectedCollaborator(null);
+    setDialogOpen(false);
+  };
 
   const handleTaskEdit = () => {
     setIsEditingTask(true);
@@ -348,7 +372,7 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
                           <Button 
                                 size="sm" 
                                 className="flex items-center bg-teal hover:bg-teal-400 text-white text-sm px-4 py-1 rounded transition-colors"
-                                onClick={() => {}}
+                                onClick={() => handleCollaboratorRemoveClick(user)}
                           >
                                 Remove
                                 <Trash className='ml-2' size={16}/>
@@ -400,6 +424,22 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
       </Tabs>
       </motion.div>
     </div>
+    <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Remove Collaborator</DialogTitle>
+            <p>Are you sure you want to remove this collaborator?</p>
+          </DialogHeader>
+          <DialogFooter>
+            <Button variant="outline" onClick={handleCancelCollaboratorRemove}>
+              Cancel
+            </Button>
+            <Button variant="destructive" className="bg-red-600 hover:bg-red-500 transition-colors" onClick={handleConfirmCollaboratorRemove}>
+              Yes, Remove
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+    </Dialog>
     <ToastContainer position="bottom-right" />
 </div>
   );
