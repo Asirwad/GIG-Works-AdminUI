@@ -261,10 +261,10 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
                           </Button>
                           <Button 
                             size="sm" 
-                            variant="outline" 
-                            className="bg-teal text-sm px-4 py-1 rounded border-red-600 text-white hover:bg-red-50 hover:text-red-500 transition-colors"
+                            variant="destructive" 
+                            className="bg-red-50 border-red-600 text-red-700 hover:bg-red-600 hover:text-white hover:border-collapse transition-colors"
                             onClick={() => handleInterestedUserRejection(job, user.user_id)}
-                          >
+                          > 
                             Reject
                           </Button>
                         </>
