@@ -19,9 +19,21 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
   const [currentTab, setCurrentTab] = useState('usersStatus');
 
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogContent, setDialogContent] = useState({
+    title: "",
+    description: "",
+    confirmText: "",
+    cancelText: "",
+  });
   const [selectedCollaborator, setSelectedCollaborator] = useState(null);
 
   const handleCollaboratorRemoveClick = (collaborator) => {
+    setDialogContent({
+      title: "Remove Collaborator",
+      description: `Are you sure you want to remove ${collaborator.name} from the collaborators list?`,
+      confirmText: "Yes, Remove",
+      cancelText: "Cancel",
+    });
     setSelectedCollaborator(collaborator);
     setDialogOpen(true);
   };
@@ -34,11 +46,13 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
       // removeCollaborator(job.id, selectedCollaborator.id); // Uncomment this when the function is defined
     }
     setDialogOpen(false);
+    setDialogContent([]);
   };
 
   const handleCancelCollaboratorRemove = () => {
     setSelectedCollaborator(null);
     setDialogOpen(false);
+    setDialogContent([]);
   };
 
   const handleTaskEdit = () => {
@@ -427,15 +441,15 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
     <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Remove Collaborator</DialogTitle>
-            <p>Are you sure you want to remove this collaborator?</p>
+            <DialogTitle>{dialogContent.title}</DialogTitle>
+            <p>{dialogContent.description}</p>
           </DialogHeader>
           <DialogFooter>
             <Button variant="outline" onClick={handleCancelCollaboratorRemove}>
-              Cancel
+              {dialogContent.cancelText}
             </Button>
             <Button variant="destructive" className="bg-red-600 hover:bg-red-500 transition-colors" onClick={handleConfirmCollaboratorRemove}>
-              Yes, Remove
+              {dialogContent.confirmText}
             </Button>
           </DialogFooter>
         </DialogContent>
