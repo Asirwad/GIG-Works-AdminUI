@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from 'react';
-import { ArrowLeft, Delete, DeleteIcon, PlusCircle, Trash } from "lucide-react";
+import { ArrowLeft, PlusCircle, Trash } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '../../ui/tabs'
 import {Button} from '../../ui/button'; 
 import { Input } from '../../ui/input';
