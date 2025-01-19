@@ -121,15 +121,12 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
   const handleAddCollaborator = async (e) => {
     e.preventDefault();
     try{
-      await axios.patch(appConfig.api.BASE_URL + `/gigs/${job.id}/collaborators`, {
+      const response = await axios.patch(appConfig.api.BASE_URL + `/gigs/${job.id}/collaborators`, {
         "collaborator_id": formData.collaborator_id
       });
+      job.collaborators = response.data.gig.collaborators;
       toast.success('Collaborator added successfully');
       resetForm();
-      setTimeout(() => {
-        window.location.reload();
-      }, 3000);
-
     }catch(error){
       console.log(error);
       toast.error('Failed to add collaborator');
