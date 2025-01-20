@@ -132,7 +132,12 @@ const AllJobs = ({ searchQuery }) => {
             onTaskUpdate={handleTaskUpdate}
           />
         ) : (
-          <main className="container mx-auto px-4 py-8">
+          <main className="container mx-auto px-4 py-8 min-h-screen">
+            { filteredGigs.length === 0 && (
+                <div className="text-center text-gray-500">
+                  No jobs found.
+                </div>
+              )}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredGigs.map((gig, index) => (
                 <motion.div
