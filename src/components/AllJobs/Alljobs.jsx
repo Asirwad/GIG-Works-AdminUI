@@ -75,7 +75,14 @@ const AllJobs = ({ searchQuery }) => {
       console.error('Error fetching data:', error);
       setJobs([]);
     })
-  });
+  }, []);
+
+  useEffect(() => {
+    const filtered = jobData.filter((job) => 
+      job.heading.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredGigs(filtered);
+  }, [searchQuery]);
 
   const updateGigStatus = async (status, job) => {
     try {

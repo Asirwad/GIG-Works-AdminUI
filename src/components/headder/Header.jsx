@@ -11,6 +11,7 @@ const Header = () => {
     const [viewFlag, setViewFlag] = useState(false);
     const [selectedJob, setSelectedJob] = useState(null);
     const [showLogout, setShowLogout] = useState(false);
+    const [ searchQuery, setSearchQuery ] = useState("");
     const userName = appConfig.admin.name;
 
     const handleAllJobsClick = () => {
@@ -36,6 +37,11 @@ const Header = () => {
         alert("Notification clicked!");
     };
 
+    const handleSearchChange = (e) => {
+        console.log(e.target.value);
+        setSearchQuery(e.target.value);
+    }
+
     return (
         <div className="bg-white p-4 border-b-2 border-gray-200">
             <div className="max-w-screen-xl mx-auto flex items-center justify-between px-4">
@@ -46,8 +52,8 @@ const Header = () => {
                     <input
                         type="text"
                         placeholder="Search Jobs..."
-                        value={null}
-                        onChange={() => {}}
+                        value={searchQuery}
+                        onChange={handleSearchChange}
                         className="py-2 px-4 text-sm border rounded-lg border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-600"
                     />
                 </div>
@@ -92,7 +98,7 @@ const Header = () => {
             {viewFlag && selectedJob ? (
                 <ViewPage job={selectedJob} />
             ) : allJobs ? (
-                <Alljobs onViewJobClick={handleViewJobClick} />
+                <Alljobs onViewJobClick={handleViewJobClick} searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
             ) : (
                 <AddJobs />
             )}
