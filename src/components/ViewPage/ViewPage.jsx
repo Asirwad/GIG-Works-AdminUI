@@ -45,6 +45,7 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
         console.log(response);
         if (response.status === 200) {
           toast.success("Collaborator removed successfully");
+          job.collaborators = response.data.gig.collaborators;
         } else {
           toast.error("Failed to remove collaborator");
         }
