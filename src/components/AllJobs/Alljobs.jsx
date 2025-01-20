@@ -58,15 +58,18 @@ const AllJobs = ({ searchQuery }) => {
         collaborators: gig.collaborators || [],
       }));
 
-      // Sort the formattedJobs, placing 'revoked' gigs at the end
+      // Sort the formattedJobs, placing 'revoked' gigs at the end and 'awaiting_admin_approval' at first
       const sortedJobs = formattedJobs.sort((a, b) => {
-        if (a.status === 'revoked' && b.status !== 'revoked') {
-          return 1;
-        }
-        if (a.status !== 'revoked' && b.status === 'revoked') {
-          return -1;
-        }
-        return 0;
+        const statusOrder = {
+          awaiting_admin_approval: 1,
+          revoked: 3,
+          default: 2, // For all other statuses
+        };
+      
+        const aOrder = statusOrder[a.status] || statusOrder.default;
+        const bOrder = statusOrder[b.status] || statusOrder.default;
+      
+        return aOrder - bOrder;
       });
       setJobs(sortedJobs);
       setFilteredGigs(sortedJobs);
