@@ -6,7 +6,7 @@ import { Input } from '../../ui/input';
 import { Label } from '../../ui/label';
 import axios from 'axios';
 import { motion } from 'framer-motion';
-import { applicationConfiguration as appConfig } from '../../AppConfig';
+import { applicationConfiguration as appConfig, applicationConfiguration } from '../../AppConfig';
 import { toast, ToastContainer } from 'react-toastify';
 import { getStatusColor, getUStarName } from '../../lib/util';
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '../../ui/dialog';
@@ -38,12 +38,19 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
     setDialogOpen(true);
   };
 
-  const handleConfirmCollaboratorRemove = () => {
+  const handleConfirmCollaboratorRemove = async () => {
     if (selectedCollaborator) {
-      // Call the removeCollaborator function here
-      console.log("Removing collaborator:", selectedCollaborator);
-      alert("Removing collaborator:", selectedCollaborator.name);
-      // removeCollaborator(job.id, selectedCollaborator.id); // Uncomment this when the function is defined
+      try {
+        const response =  await axios.delete(applicationConfiguration.api.BASE_URL + `/gigs/${job.id}/collaborators/${selectedCollaborator._id}`);
+        console.log(response);
+        if (response.status === 200) {
+          toast.success("Collaborator removed successfully");
+        } else {
+          toast.error("Failed to remove collaborator");
+        }
+      } catch (error) {
+        toast.error("Failed to remove collaborator");
+      }
     }
     setDialogOpen(false);
     setDialogContent([]);
