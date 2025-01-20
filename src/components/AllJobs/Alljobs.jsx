@@ -93,33 +93,26 @@ const AllJobs = ({ searchQuery }) => {
       return response;
     } catch (error) {
       console.log(error);
+      return null;
     }
   };
 
-  const handleApproveButtonClick=(job)=>{
-    const result = updateGigStatus("approved", job);
-    if(result){
-      toast.success("Task approved!");
-    }else{
-      toast.error("Task approval failed!");
-    }
-  };
-
-  const handlePauseButtonClick=(job)=>{
-    const result = updateGigStatus("paused", job);
-    if(result){
-      toast.success("Task paused!");
-    }else{
-      toast.error("Task pausing failed!");
-    }
-  };
-
-  const handleRevokeButtonClick=(job)=>{
-    const result = updateGigStatus("revoked", job);
-    if(result){
-      toast.success("Task revoked!");
-    }else{
-      toast.error("Task revoking failed!");
+  const handleStatusChange = async (status, job) => {
+    const response = await updateGigStatus(status, job);
+    if (response) {
+      setJobs((prevJobs) =>
+        prevJobs.map((gig) =>
+          gig.id === job.id ? { ...gig, status: status } : gig
+        )
+      );
+      setFilteredGigs((prevJobs) =>
+        prevJobs.map((gig) =>
+          gig.id === job.id ? { ...gig, status: status } : gig
+        )
+      );
+      toast.success(`Task ${status}!`);
+    } else {
+      toast.error(`Failed to ${status} the task!`);
     }
   };
  
@@ -175,13 +168,13 @@ const AllJobs = ({ searchQuery }) => {
                         <>
                           <Button
                             className="w-1/3 bg-teal-600 hover:bg-teal-700 mt-auto text-white"
-                            onClick={() => handleApproveButtonClick(gig)}
+                            onClick={() => handleStatusChange('approved', gig)}
                           >
                             Approve
                           </Button>
                           <Button
                             className="w-1/3 bg-teal-600 hover:bg-teal-700 mt-auto text-white"
-                            onClick={() => handleRevokeButtonClick(gig)}
+                            onClick={() => handleStatusChange('revoked', gig)}
                           >
                             Reject
                           </Button>
@@ -191,13 +184,13 @@ const AllJobs = ({ searchQuery }) => {
                         <>
                           <Button
                             className="w-1/3 bg-teal-600 hover:bg-teal-700 mt-auto text-white"
-                            onClick={() => handlePauseButtonClick(gig)}
+                            onClick={() => handleStatusChange('paused',gig)}
                           >
                             Pause
                           </Button>
                           <Button
                           className="w-1/3 bg-teal-600 hover:bg-teal-700 mt-auto text-white"
-                          onClick={() => handleRevokeButtonClick(gig)}
+                          onClick={() => handleStatusChange('revoked', gig)}
                           >
                           Revoke
                           </Button>
@@ -207,13 +200,13 @@ const AllJobs = ({ searchQuery }) => {
                         <>
                           <Button
                           className="w-1/3 bg-teal-600 hover:bg-teal-700 mt-auto text-white"
-                          onClick={() => handleApproveButtonClick(gig)}
+                          onClick={() => handleStatusChange('approved', gig)}
                           >
                             Resume
                           </Button>
                           <Button
                             className="w-1/3 bg-teal-600 hover:bg-teal-700 mt-auto text-white"
-                            onClick={() => handleRevokeButtonClick(gig)}
+                            onClick={() => handleStatusChange('revoked', gig)}
                           >
                           Revoke
                           </Button>
