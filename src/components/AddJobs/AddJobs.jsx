@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import { applicationConfiguration as appConfig } from '../../AppConfig';
+import { cn } from '../../lib/util';
 
 const AddJobs = () => {
 
@@ -106,7 +107,7 @@ const AddJobs = () => {
                         name="heading"
                         value={formData.heading}
                         onChange={handleChange}
-                        className={`mt-1 ${errors.heading ? "border-red-500 focus:ring-red-500" : ""}`}
+                        className={`mt-1 border-0 shadow-inner ${errors.heading ? "border-red-500 focus:ring-red-500" : ""}`}
                     />
                     </div>
 
@@ -124,8 +125,11 @@ const AddJobs = () => {
                         name="ustarPoints"
                         value={formData.ustarPoints}
                         onChange={handleChange}
-                        className={`mt-1 w-full p-2 border rounded-lg ${errors.ustarPoints ? "border-red-500 focus:ring-red-500" : ""}`}
-                    >
+                        className={cn(
+                            "mt-1 w-full p-2 border border-input bg-background shadow-inner rounded-lg text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-transform duration-150 ease-in-out focus:translate-y-[-2px]",
+                            errors.ustarPoints ? "border-red-500" : "",
+                        )}
+                        >
                         <option value="1">RisingStar</option>
                         <option value="2">ShiningStar</option>
                         <option value="3">SuperStar</option>
@@ -150,7 +154,9 @@ const AddJobs = () => {
                         name="description"
                         value={formData.description}
                         onChange={handleChange}
-                        className={`mt-1 w-full h-48 p-2 border rounded-lg ${errors.description ? "border-red-500 focus:ring-red-500" : ""}`}
+                        className={cn(
+                            "mt-1 w-full h-48 p-2 border border-input bg-background shadow-inner rounded-lg text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-transform duration-150 ease-in-out focus:translate-y-[-2px]",
+                            errors.description ? "border-red-500" : "")}
                     />
                     </div>
 
@@ -168,7 +174,9 @@ const AddJobs = () => {
                         name="task"
                         value={formData.task}
                         onChange={handleChange}
-                        className={`mt-1 w-full h-48 p-2 border rounded-lg ${errors.task ? "border-red-500 focus:ring-red-500" : ""}`}
+                        className={cn(
+                            "mt-1 w-full h-48 p-2 border border-input bg-background shadow-inner rounded-lg text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-transform duration-150 ease-in-out focus:translate-y-[-2px]",
+                            errors.task ? "border-red-500" : "")}
                     />
                     </div>
 
