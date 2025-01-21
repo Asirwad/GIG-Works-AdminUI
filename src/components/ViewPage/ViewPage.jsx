@@ -419,7 +419,7 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
             viewport={{ amount: 0.3, once: true }}
             className="w-full mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg"
           >
-            <h2 className="text-2xl font-semibold text-gray-800 mb-6">Add Collaborator</h2>
+            <h2 className="text-xl font-semibold text-teal-800 mb-3">Add Collaborator</h2>
             <form onSubmit={handleAddCollaborator} className="flex items-center space-x-4">
               <div className="flex-1">
                 <Input 

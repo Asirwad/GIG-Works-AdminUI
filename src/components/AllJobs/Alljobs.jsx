@@ -151,7 +151,7 @@ const AllJobs = ({ searchQuery }) => {
                 >
                   <Card key={gig.id} className="bg-white flex flex-col h-full shadow-md transition duration-300 hover:shadow-xl">
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle badge={gig.status} className="text-xl font-bold">
+                    <CardTitle badge={gig.status} className="text-xl text-teal-900 font-bold">
                       {gig.heading}
                     </CardTitle>
                     <Button variant="ghost" size="icon" className="text-yellow-500 bg-transparent">
@@ -161,7 +161,7 @@ const AllJobs = ({ searchQuery }) => {
                   </CardHeader>
                   <CardContent className="flex-grow flex flex-col justify-between">
                     <div>
-                      <h3 className="font-semibold mb-2">Description</h3>
+                      <h3 className="font-semibold mb-2 text-teal-900">Description</h3>
                       <p className="text-sm text-gray-600 mb-4">
                         {gig.description}
                       </p>
