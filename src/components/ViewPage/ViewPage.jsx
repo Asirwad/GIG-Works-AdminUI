@@ -77,6 +77,7 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
         onTaskUpdate(updatedJob);
       }
       setIsEditingTask(false);
+      setTaskDetails(taskDetails);
       toast.success("Task updated successfully");
     })
     .catch((error) => {
@@ -356,7 +357,7 @@ const ViewPage = ({ job, onBack, onTaskUpdate }) => {
                   </div>
                 ) : (
                   <div className="relative pb-6">
-                    <p className="whitespace-pre-line">{job.task}</p>
+                    <p className="whitespace-pre-line">{taskDetails}</p>
                     <button
                       onClick={handleTaskEdit}
                       className="absolute bottom-0 right-0 bg-teal hover:bg-teal-400 text-white text-sm px-4 py-1.5 rounded"
